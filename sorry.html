@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My appologize to Thien Ngan</title>
+
+    <link rel="stylesheet" href="my.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <h1 class="Greeting">Xin chào Thiên Ngân <br>
+    </h1>
+    <h1 class="Text" style="display: none;">Đây là lời xin lỗi của anh đến em. Nếu anh có làm điều gì khiến em phải chờ
+        đợi thì xin em hãy
+        thông cảm :((. Anh xin lỗi vì đã làm em phải chờ đợi. Anh sẽ cố gắng hơn nữa để không làm em phải chờ đợi
+        nữa. <br>
+    </h1>
+    <br>
+
+
+
+
+    <script>
+        function DTX(obj) {
+            var text = document.querySelector(obj).textContent;
+
+            var length = text.length;
+            var timeOut;
+            var character = 0;
+            document.querySelector(obj).style.display = 'block';
+            (function typeWriter() {
+
+                timeOut = setTimeout(function () {
+                    character++;
+                    var type = text.substring(0, character);
+                    document.querySelector(obj).textContent = type;
+                    typeWriter();
+
+                    if (character == length) {
+                        clearTimeout(timeOut);
+                    }
+
+                }, 100);
+            }());
+        }
+        function LOAD() {
+            DTX('.Greeting');
+            var greetingLength = document.querySelector('.Greeting').textContent.length;
+            setTimeout(function () {
+
+                DTX('.Text');
+            }, greetingLength * 100);
+        }
+        LOAD();
+
+    </script>
+</body>
+
+</html>
